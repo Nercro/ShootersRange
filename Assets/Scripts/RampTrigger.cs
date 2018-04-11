@@ -16,7 +16,8 @@ public class RampTrigger : MonoBehaviour {
             rampAnimation.enabled = true;
             if (_spawnText)
             {
-                GameManager.Instance.LoadText(gameObject.tag);
+                GameManager.Instance.textState = GameManager.TextStates.RampLeftRange; 
+                GameManager.Instance.LoadText();
                 _spawnText = false;
             }
             
@@ -28,7 +29,8 @@ public class RampTrigger : MonoBehaviour {
             rampAnimation.enabled = true;
             if (_spawnText)
             {
-                GameManager.Instance.LoadText(gameObject.tag);
+                GameManager.Instance.textState = GameManager.TextStates.RampMiddleRange;
+                GameManager.Instance.LoadText();
                 _spawnText = false;
             }
             
@@ -40,7 +42,8 @@ public class RampTrigger : MonoBehaviour {
             rampAnimation.enabled = true;
             if (_spawnText)
             {
-                GameManager.Instance.LoadText(gameObject.tag);
+                GameManager.Instance.textState = GameManager.TextStates.RampRightRange;
+                GameManager.Instance.LoadText();
                 _spawnText = false;
             }
         }

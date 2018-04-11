@@ -20,7 +20,7 @@ public class PlayerControler : MonoBehaviour {
         Vector3 movementZ = Input.GetAxisRaw("Vertical") * Vector3.forward * movementSpeed * Time.deltaTime;
         Vector3 movementx = Input.GetAxisRaw("Horizontal") * Vector3.right * movementSpeed * Time.deltaTime;
 
-        Vector3 movement = transform.InverseTransformDirection(movementZ + movementx);
+        Vector3 movement = transform.TransformDirection(movementZ + movementx);
         movement.y = gravity * Time.deltaTime;
         _characterController.Move(movement);
 

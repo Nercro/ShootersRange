@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
+    public enum TextStates
+    {
+        RampLeftRange,
+        RampMiddleRange,
+        RampRightRange,
+        level1Finished,
+        level2Finished,
+    }
 
     public RestartLevelText restartLevelTextPrefab;
     public GameObject level1GuidePrefab;
@@ -11,6 +19,8 @@ public class GameManager : MonoBehaviour {
     public GameObject level2GuidePrefab;
     public GameObject level2WinTextPrefab;
     public GameObject level3GuidePrefab;
+    public TextStates textState = TextStates.RampLeftRange;
+
     public int Score = 0;
     public float Timer = 30.0f;
     public int scoreToAchive = 50;
@@ -74,12 +84,14 @@ public class GameManager : MonoBehaviour {
         if (targetsHit >= numberOfTargets && enemytag == "Enemy")
         {
             GameManager.Instance.level1Finished = true;
-            LoadText("level1Finished");
+            textState = TextStates.level1Finished;
+            LoadText();
         }
         else if (targetsHit >= numberOfTargets && enemytag == "EnemyMovable")
         {
             GameManager.Instance.level2Finished = true;
-            LoadText("level2Finished");
+            textState = TextStates.level2Finished;
+            LoadText();
         }
     }
 
@@ -99,27 +111,27 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void LoadText(string tag)
+    public void LoadText()
     {
-        switch (tag)
+        switch (textState)
         {
-           case "RampLeftRange":
+           case TextStates.RampLeftRange:
                 Instantiate(level1GuidePrefab, level1GuidePrefab.transform.position, Quaternion.identity);
                 break;
 
-           case "RampMiddleRange":
+           case TextStates.RampMiddleRange:
                 Instantiate(level2GuidePrefab, level2GuidePrefab.transform.position, Quaternion.identity);
                 break;
 
-           case "level1Finished":
+           case TextStates.level1Finished:
                 Instantiate(level1WinTextPrefab, level1WinTextPrefab.transform.position, Quaternion.identity);
                 break;
 
-           case "level2Finished":
+           case TextStates.level2Finished:
                 Instantiate(level2WinTextPrefab, level2WinTextPrefab.transform.position, Quaternion.identity);
                 break;
 
-           case "RampRightRange":
+           case TextStates.RampRightRange:
                 Instantiate(level3GuidePrefab, level3GuidePrefab.transform.position, Quaternion.identity);
                break;
 
