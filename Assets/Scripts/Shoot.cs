@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour {
-    
-    public GameObject projectilePrefab;
-    public float power = 10.0f;
-    // public List<Transform> firingPoints = new List<Transform>();  za vise firing pointova
-    public Transform firingPoint;
+
+
+    public float damage = 1f;
+    public float range = 100f;
     public float rateOfFire = 1;
 
+    public Camera fpsCamera;
+    public ParticleSystem muzzleFlash;
+    public GameObject impactEffectPrefab;
+    public AudioClip shootSound;
+
+    public GameObject zoomCameraPosition;
     
+
+    private GameObject _zoomCameraClone;
 
     public enum FiringModes
     {
@@ -26,20 +33,14 @@ public class Shoot : MonoBehaviour {
 
     private void Awake()
     {
-        Cursor.visible = false; // miče strelicu mousa u igri
-        Cursor.lockState = CursorLockMode.Locked; // zaključa poziciju cursora da ne izlazi iz ekrana bez obzira sto se ne vidi u igri
+        Cursor.visible = false; 
+        Cursor.lockState = CursorLockMode.Locked; 
      
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            //for (int i = 0; i < firingPoints.Count; i++)
-            //{
-            //    ShootProjectile(firingPoints [i]);    za više Firing Pointova
-            //}
-        }
+        ZoomCamera();
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -94,10 +95,21 @@ public class Shoot : MonoBehaviour {
 
     private void ShootProjectile()
     {
-        GameObject fireProjectile =  Instantiate(projectilePrefab, firingPoint.position, Quaternion.identity) as GameObject;
-        Rigidbody fireProjectileRigidbody = fireProjectile.GetComponent<Rigidbody>();
+        muzzleFlash.Play();
+        AudioSource.PlayClipAtPoint(shootSound, transform.position);
 
-        fireProjectileRigidbody.AddForce(firingPoint.forward * power, ForceMode.VelocityChange);
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+
+            Target target = hit.transform.GetComponent<Target>();
+            if (target)
+                target.TakeDamage();
+
+            GameObject impactEffectClone = Instantiate(impactEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactEffectClone, 2f);
+        }
         
     }
 
@@ -112,6 +124,22 @@ public class Shoot : MonoBehaviour {
               firingModeActive = FiringModes.Semi;
               _timesFPressed = 0;
          }
+    }
+    
+
+    private void ZoomCamera()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            fpsCamera.fieldOfView = 7f;
+            zoomCameraPosition.SetActive(true);
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            fpsCamera.fieldOfView = 60f;
+            zoomCameraPosition.SetActive(false);
+        }
     }
 }
 

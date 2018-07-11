@@ -20,9 +20,10 @@ public class StartSpawning : MonoBehaviour {
 
         
     }
-    private void OnCollisionEnter(Collision other)
+    
+    private void OnTriggerStay(Collider other)
     {
-        if (startSpawn && !GameManager.Instance.level1Finished && gameObject.tag == "StartButtonLeftRange")  // da ne pokrece vise puta 
+        if (Input.GetKeyDown(KeyCode.E) && startSpawn && !GameManager.Instance.level1Finished && gameObject.tag == "StartButtonLeftRange")  // da ne pokrece vise puta 
         {
             startSpawn = false;
             GameManager.Instance.numberOfTargets = targetsNumber;
@@ -31,7 +32,7 @@ public class StartSpawning : MonoBehaviour {
 
             StartCoroutine(objectSpawner.Spawner());
         }
-        else if (startSpawn && GameManager.Instance.level1Finished && gameObject.tag == "StartButtonLeftRange") // ako player želi ponovno odigrati
+        else if (Input.GetKeyDown(KeyCode.E) && startSpawn && GameManager.Instance.level1Finished && gameObject.tag == "StartButtonLeftRange") // ako player želi ponovno odigrati
         {
             GameManager.Instance.targetsHit = 0;
             GameManager.Instance.numberOfTargets = targetsNumber;
@@ -40,7 +41,7 @@ public class StartSpawning : MonoBehaviour {
            
             StartCoroutine(objectSpawner.Spawner());
         }
-        else if (startSpawn && !GameManager.Instance.level2Finished && gameObject.tag == "StartButtonMiddleRange")
+        else if (Input.GetKeyDown(KeyCode.E) && startSpawn && !GameManager.Instance.level2Finished && gameObject.tag == "StartButtonMiddleRange")
         {
             startSpawn = false;
             GameManager.Instance.targetsHit = 0;
@@ -50,7 +51,7 @@ public class StartSpawning : MonoBehaviour {
 
             StartCoroutine(objectSpawner.Spawner());
         }
-        else if (startSpawn && GameManager.Instance.level2Finished && gameObject.tag == "StartButtonMiddleRange") 
+        else if (Input.GetKeyDown(KeyCode.E) && startSpawn && GameManager.Instance.level2Finished && gameObject.tag == "StartButtonMiddleRange") 
         {
             GameManager.Instance.targetsHit = 0;
             GameManager.Instance.numberOfTargets = targetsNumber;
@@ -61,4 +62,7 @@ public class StartSpawning : MonoBehaviour {
         }
 
     }
+
+    
 }
+

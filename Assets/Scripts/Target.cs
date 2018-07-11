@@ -46,4 +46,19 @@ public class Target : MonoBehaviour {
 
 
     }
+
+    public void TakeDamage()
+    {
+        _targetHitCount++;
+        if (_targetHitCount >= timesHitToDie)
+        {
+            Debug.Log("Target HIT... Destroy Projectile and Object");
+            GameManager.Instance.UpdateScore(scoreValue);
+            GameManager.Instance.UpdateTime(timeValue);
+            GameManager.Instance.TargetsHitControler(1, gameObject.tag);
+
+            Destroy(gameObject);
+            _targetHitCount = 0;
+        }
+    }
 }

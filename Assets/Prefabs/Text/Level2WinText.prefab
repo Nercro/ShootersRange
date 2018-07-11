@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4766728146653520}
   - component: {fileID: 23044916068549000}
   - component: {fileID: 102044999061259086}
-  - component: {fileID: 65647460493423074}
   - component: {fileID: 114537580765997010}
   m_Layer: 0
   m_Name: Level2WinText
@@ -77,18 +76,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65647460493423074
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555256197438436}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 19.6, y: 7.431836, z: 0}
-  m_Center: {x: 9.8, y: -3.715918, z: 0}
 --- !u!102 &102044999061259086
 TextMesh:
   serializedVersion: 3
@@ -98,9 +85,7 @@ TextMesh:
   m_GameObject: {fileID: 1555256197438436}
   m_Text: 'Great job!!
 
-    If you want to try again
-
-    shoot the GREEN BUTTON again
+    Press E to try again
 
 
     Please proceed to next range'

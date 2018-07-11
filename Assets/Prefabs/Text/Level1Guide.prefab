@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4996217465383006}
   - component: {fileID: 23130200275245658}
   - component: {fileID: 102256307284018934}
-  - component: {fileID: 65128429669177018}
   - component: {fileID: 114199519648849914}
   m_Layer: 0
   m_Name: Level1Guide
@@ -77,18 +76,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65128429669177018
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1851399498544896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 21, y: 4.44209, z: 0}
-  m_Center: {x: 10.5, y: -2.221045, z: 0}
 --- !u!102 &102256307284018934
 TextMesh:
   serializedVersion: 3
@@ -99,7 +86,7 @@ TextMesh:
   m_Text: 'Shoot static targets as they appear
 
 
-    Shoot the GREEN BUTTON to Start'
+    Press E to Start'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

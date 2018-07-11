@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4126458091628136}
   - component: {fileID: 23250774877367494}
   - component: {fileID: 102384183504079098}
-  - component: {fileID: 65665243750181598}
   - component: {fileID: 114180772441234652}
   m_Layer: 0
   m_Name: Level3Guide
@@ -77,18 +76,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65665243750181598
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1453596262334758}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9.6, y: 1.4523438, z: 0}
-  m_Center: {x: 4.8, y: -0.7261719, z: 0}
 --- !u!102 &102384183504079098
 TextMesh:
   serializedVersion: 3
