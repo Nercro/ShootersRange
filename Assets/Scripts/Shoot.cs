@@ -13,6 +13,7 @@ public class Shoot : MonoBehaviour {
     public ParticleSystem muzzleFlash;
     public GameObject impactEffectPrefab;
     public AudioClip shootSound;
+    public LayerMask layersToCollide;
 
     public GameObject zoomCameraPosition;
     
@@ -75,7 +76,6 @@ public class Shoot : MonoBehaviour {
                     _nexFire = Time.time + rateOfFire;
                         
                     ShootProjectile();
-                    //vidjeti za fire rate (najvjerojatnije isto rijesenje sa cekanjem kao u buirstu)
                 }
                 break;
             default:
@@ -99,7 +99,7 @@ public class Shoot : MonoBehaviour {
         AudioSource.PlayClipAtPoint(shootSound, transform.position);
 
         RaycastHit hit;
-        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range, layersToCollide))
         {
             Debug.Log(hit.transform.name);
 

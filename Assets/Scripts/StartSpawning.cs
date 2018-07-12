@@ -25,6 +25,7 @@ public class StartSpawning : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.E) && startSpawn && !GameManager.Instance.level1Finished && gameObject.tag == "StartButtonLeftRange")  // da ne pokrece vise puta 
         {
+            Debug.Log("1 uvjet");
             startSpawn = false;
             GameManager.Instance.numberOfTargets = targetsNumber;
             GameManager.Instance.UpdateTargetsHitText();
@@ -34,6 +35,7 @@ public class StartSpawning : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.E) && startSpawn && GameManager.Instance.level1Finished && gameObject.tag == "StartButtonLeftRange") // ako player želi ponovno odigrati
         {
+            Debug.Log("2 uvjet");
             GameManager.Instance.targetsHit = 0;
             GameManager.Instance.numberOfTargets = targetsNumber;
             GameManager.Instance.UpdateTargetsHitText();
@@ -43,6 +45,7 @@ public class StartSpawning : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.E) && startSpawn && !GameManager.Instance.level2Finished && gameObject.tag == "StartButtonMiddleRange")
         {
+            Debug.Log("3vjet");
             startSpawn = false;
             GameManager.Instance.targetsHit = 0;
             GameManager.Instance.numberOfTargets = targetsNumber;
